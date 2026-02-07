@@ -1,0 +1,52 @@
+# Theme Configuration
+
+# Menu
+menu:
+  Home: /
+  Archives: /archives
+  About: /about
+
+# Social Links
+social:
+  # GitHub: https://github.com/yourusername
+  # Twitter: https://twitter.com/yourusername
+  # Email: mailto:your@email.com
+
+# Appearance
+appearance:
+  # Enable dark mode
+  dark_mode: false
+  # Show back to top button
+  back_to_top: true
+
+# Post Settings
+post:
+  # Show post meta info
+  show_meta: true
+  # Show tags
+  show_tags: true
+  # Show categories
+  show_categories: true
+  # Show updated date
+  show_updated: false
+
+# Archive Settings
+archive:
+  posts_per_page: 20
+
+# Comments
+# Uncomment and configure your comment system
+# comments:
+#   provider: disqus
+#   disqus_shortname: your-disqus-shortname
+
+# Analytics
+# Uncomment and add your tracking ID
+# google_analytics: UA-XXXXX-X
+# baidu_analytics: xxxxxxxxxxxxxxxx
+
+# SEO
+# Auto generate description for posts without description
+auto_excerpt:
+  enable: true
+  length: 150

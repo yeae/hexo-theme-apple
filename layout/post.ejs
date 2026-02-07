@@ -1,0 +1,48 @@
+<article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <time datetime="<%= page.date.toISOString() %>">
+                <%= page.date.format(config.date_format) %>
+            </time>
+            <% if (page.categories && page.categories.length) { %>
+            <span class="post-separator">·</span>
+            <span class="post-category-inline">
+                <%- list_categories(page.categories, {
+                    show_count: false,
+                    style: 'none',
+                    separator: ' / '
+                }) %>
+            </span>
+            <% } %>
+        </div>
+        <h1 class="post-title"><%= page.title %></h1>
+    </header>
+
+    <div class="post-content">
+        <%- page.content %>
+    </div>
+
+    <% if (page.tags && page.tags.length) { %>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <%- list_tags(page.tags, {
+                show_count: false,
+                style: 'none'
+            }) %>
+        </div>
+    </footer>
+    <% } %>
+</article>
+
+<nav class="post-nav">
+    <% if (page.prev) { %>
+    <a href="<%- url_for(page.prev.path) %>" class="prev">
+        ← <%= page.prev.title %>
+    </a>
+    <% } %>
+    <% if (page.next) { %>
+    <a href="<%- url_for(page.next.path) %>" class="next">
+        <%= page.next.title %> →
+    </a>
+    <% } %>
+</nav>

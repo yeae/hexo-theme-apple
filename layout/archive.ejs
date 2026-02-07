@@ -1,0 +1,27 @@
+<div class="archive">
+    <% if (page.year) { %>
+    <h1 class="archive-title"><%= page.year %><% if (page.month) { %>-<%= page.month %><% } %></h1>
+    <% } else { %>
+    <h1 class="archive-title">Archives</h1>
+    <% } %>
+
+    <div class="archive-posts">
+        <% page.posts.each(function(post) { %>
+        <article class="archive-post">
+            <time datetime="<%= post.date.toISOString() %>">
+                <%= post.date.format('YYYY-MM-DD') %>
+            </time>
+            <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+        </article>
+        <% }); %>
+    </div>
+
+    <% if (page.total > 1) { %>
+    <nav class="pagination">
+        <%- paginator({
+            prev_text: '&laquo; Prev',
+            next_text: 'Next &raquo;'
+        }) %>
+    </nav>
+    <% } %>
+</div>

@@ -1,0 +1,26 @@
+{
+  "name": "hexo-theme-apple",
+  "version": "1.0.0",
+  "description": "A clean and minimal Hexo theme inspired by Apple's design language",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "apple",
+    "minimal",
+    "clean"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
