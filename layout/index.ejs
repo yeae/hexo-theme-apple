@@ -1,21 +1,45 @@
-<div class="posts-grid">
-    <% page.posts.each(function(post) { %>
-    <article class="post-card">
-        <a href="<%- url_for(post.path) %>" class="post-card-link">
-            <div class="post-card-content">
-                <div class="post-meta">
-                    <time datetime="<%= post.date.toISOString() %>">
-                        <%= post.date.format(config.date_format) %>
-                    </time>
-                </div>
-                <h2 class="post-card-title"><%= post.title %></h2>
-                <div class="post-excerpt">
-                    <%- (post.excerpt || post.content).substring(0, 200) %>...
-                </div>
-                <span class="read-more-link">阅读全文 →</span>
+<%
+// 按月份分组文章
+var monthGroups = {};
+page.posts.each(function(post) {
+    var monthKey = post.date.format('YYYY-MM');
+    if (!monthGroups[monthKey]) {
+        monthGroups[monthKey] = {
+            title: post.date.format('YYYY年MM月'),
+            posts: []
+        };
+    }
+    monthGroups[monthKey].posts.push(post);
+});
+%>
+
+<div class="posts-by-month">
+    <% Object.keys(monthGroups).forEach(function(monthKey) { %>
+    <section class="month-section">
+        <h2 class="month-header"><%= monthGroups[monthKey].title %></h2>
+        <div class="posts-scroll-container">
+            <div class="posts-scroll-inner">
+                <% monthGroups[monthKey].posts.forEach(function(post) { %>
+                <article class="post-card">
+                    <a href="<%- url_for(post.path) %>" class="post-card-link">
+                        <div class="post-card-content">
+                            <div class="post-meta">
+                                <time datetime="<%= post.date.toISOString() %>">
+                                    <%= post.date.format(config.date_format) %>
+                                </time>
+                            </div>
+                            <h2 class="post-card-title"><%= post.title %></h2>
+                            <div class="post-excerpt">
+                                <%- (post.excerpt || post.content).substring(0, 200) %>...
+                            </div>
+                            <span class="read-more-link">阅读全文 →</span>
+                        </div>
+                    </a>
+                </article>
+                <% }); %>
             </div>
-        </a>
-    </article>
+        </div>
+    </section>
     <% }); %>
 </div>
 
