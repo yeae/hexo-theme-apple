@@ -1,27 +1,43 @@
-# Theme Configuration
+# Hexo Theme Apple - Configuration for yeae's Blog
+# Author: yeae
+# GitHub: https://github.com/yeae
 
-# Menu
+# ========================
+# Site Navigation
+# ========================
 menu:
   Home: /
   Archives: /archives
-  About: /about
+  Categories: /categories
+  Tags: /tags
+  # About: /about
 
+# ========================
 # Social Links
+# ========================
 social:
-  # GitHub: https://github.com/yourusername
+  GitHub: https://github.com/yeae
   # Twitter: https://twitter.com/yourusername
   # Email: mailto:your@email.com
+  # ZhiHu: https://www.zhihu.com/people/yourname
+  # Weibo: https://weibo.com/yourname
 
+# ========================
 # Appearance
+# ========================
 appearance:
-  # Enable dark mode
-  dark_mode: false
+  # Enable dark mode (auto/user preference)
+  dark_mode: true
   # Show back to top button
   back_to_top: true
+  # Smooth scroll animation
+  smooth_scroll: true
 
+# ========================
 # Post Settings
+# ========================
 post:
-  # Show post meta info
+  # Show post meta info (author, date, etc.)
   show_meta: true
   # Show tags
   show_tags: true
@@ -29,24 +45,68 @@ post:
   show_categories: true
   # Show updated date
   show_updated: false
+  # Show copyright notice
+  show_copyright: true
+  # Show table of contents
+  show_toc: true
+  # Enable code copy button
+  code_copy: true
+  # Enable code highlight
+  code_highlight: true
 
+# ========================
 # Archive Settings
+# ========================
 archive:
-  posts_per_page: 20
+  posts_per_page: 15
+  # Enable yearly archive
+  yearly_archive: true
+  # Enable monthly archive
+  monthly_archive: true
 
-# Comments
+# ========================
+# Comments System
+# ========================
 # Uncomment and configure your comment system
 # comments:
 #   provider: disqus
 #   disqus_shortname: your-disqus-shortname
+#   
+#   # Gitalk
+#   provider: gitalk
+#   clientID: your-client-id
+#   clientSecret: your-client-secret
+#   repo: your-repo
+#   owner: your-github-username
+#   admin: your-github-username
 
+# ========================
 # Analytics
+# ========================
 # Uncomment and add your tracking ID
 # google_analytics: UA-XXXXX-X
 # baidu_analytics: xxxxxxxxxxxxxxxx
+# cnzz_analytics: xxxxxxxxxx
 
-# SEO
+# ========================
+# SEO Settings
+# ========================
 # Auto generate description for posts without description
 auto_excerpt:
   enable: true
-  length: 150
+  length: 200
+
+# ========================
+# RSS Feed
+# ========================
+# Enable RSS feed (requires hexo-generator-feed)
+# rss: /atom.xml
+
+# ========================
+# Search
+# ========================
+# Enable local search (requires hexo-generator-search)
+# search:
+#   enable: true
+#   path: search.xml
+#   field: post

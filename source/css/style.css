@@ -1,28 +1,67 @@
 /* Apple Theme Stylesheet */
+/* Optimized for yeae's Blog */
 
 :root {
+    /* Apple Design Colors */
     --primary-color: #0071e3;
+    --primary-hover: #0077ed;
     --text-color: #1d1d1f;
     --secondary-text: #86868b;
+    --tertiary-text: #a1a1a6;
     --background: #ffffff;
     --card-background: #fbfbfd;
     --border-color: #d2d2d7;
     --hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+    
+    /* Transitions */
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s ease;
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 
-    /* 卡片尺寸参数 - 可自定义 */
-    --card-width: 280px;           /* 卡片宽度 */
-    --card-height: auto;            /* 卡片高度（auto 为自动） */
-    --card-padding: 2.5rem 2rem;    /* 卡片内边距 */
-    --card-gap: 2.5rem;             /* 卡片之间的间距 */
-    --card-border-radius: 28px;     /* 卡片圆角 */
+    /* Card Design Parameters */
+    --card-width: 280px;
+    --card-height: auto;
+    --card-padding: 2.5rem 2rem;
+    --card-gap: 2.5rem;
+    --card-border-radius: 28px;
 
-    /* 悬停效果参数 - 可自定义 */
-    --card-hover-lift: -8px;        /* 悬停时上浮距离（负值向上） */
-    --card-hover-scale: 1.02;       /* 悬停时缩放比例 */
+    /* Hover Effects */
+    --card-hover-lift: -8px;
+    --card-hover-scale: 1.02;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #2997ff;
+        --primary-hover: #40a3ff;
+        --text-color: #f5f5f7;
+        --secondary-text: #a1a1a6;
+        --tertiary-text: #6e6e73;
+        --background: #000000;
+        --card-background: #1c1c1e;
+        --border-color: #38383a;
+        --hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    header {
+        background: rgba(28, 28, 30, 0.72);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .post-card {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
 }
 
 * {
@@ -610,5 +649,149 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Additional Enhancements */
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-base);
+    z-index: 999;
+    box-shadow: var(--card-shadow);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Table Styles */
+.post-content table, .page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.post-content table th, .page-content table th {
+    background: var(--card-background);
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.post-content table td, .page-content table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-content table tr:last-child td, .page-content table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Blockquote */
+.post-content blockquote, .page-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    color: var(--secondary-text);
+    font-style: italic;
+}
+
+/* Search Box (if enabled) */
+.search-box {
+    position: relative;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    background: var(--card-background);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition-base);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+/* Category & Tag Pages */
+.category-list, .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.category-item, .tag-item {
+    background: var(--card-background);
+    padding: 0.75rem 1.5rem;
+    border-radius: 24px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: var(--transition-base);
+    border: 1px solid var(--border-color);
+}
+
+.category-item:hover, .tag-item:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Print Styles */
+@media print {
+    header, footer, .back-to-top, .pagination {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .post-card {
+        break-inside: avoid;
     }
 }
